@@ -64,7 +64,6 @@ const images = [
   },
 ];
 
-
 function createMarkup(arr) {
   return arr.map(({ preview, original, description }) =>
     ` <li class="gallery-item">
@@ -96,17 +95,16 @@ galleryImages.forEach(image => {
   function handlerGetOriginal() {
     const imageUrl = image.getAttribute('data-source');
     openModal(imageUrl);
+
   }
 })
+
+
 function openModal(imageUrl) {
+  const clickedImage = images.find((image) => image.original === imageUrl);
+  const clickedImageDescription = clickedImage.description;
   const instance = basicLightbox.create(`
-	<img class="gallery-image" src="${imageUrl}"  alt="${this.description}" />
-`);
+	<img class="gallery-image" src="${imageUrl}"  alt="${clickedImageDescription} " />
+  `);
   instance.show();
 }
-
-
-
-
-
-
