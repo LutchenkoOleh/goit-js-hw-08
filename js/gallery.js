@@ -89,23 +89,21 @@ function handlerGetImage(evt) {
 }
 
 const galleryImages = document.querySelectorAll('.gallery-image');
+
 galleryImages.forEach(image => {
   image.addEventListener('click', handlerGetOriginal)
 
-  function handlerGetOriginal(event) {
-    event.preventDefault();
-
+  function handlerGetOriginal() {
     const imageUrl = image.getAttribute('data-source');
     openModal(imageUrl);
   }
-});
-
+})
 function openModal(imageUrl) {
-  const lightbox = basicLightbox.create(`<img class='imageUrl' src="${imageUrl}" alt="${images.description}">`);
-  lightbox.show();
+  const instance = basicLightbox.create(`
+	<img class="gallery-image" src="${imageUrl}"  alt="${this.description}" />
+`);
+  instance.show();
 }
-
-
 
 
 
